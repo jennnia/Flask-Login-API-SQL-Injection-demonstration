@@ -25,6 +25,7 @@ def login():
 
     conn = sqlite3.connect('example.db')
     c = conn.cursor()
+    # Vulnerable SQL Query
     query = f"SELECT * FROM users WHERE username='{username}' AND password='{password}'"
     c.execute(query)
     user = c.fetchone()
@@ -40,11 +41,13 @@ def secure_login():
     username = data.get('username')
     password = data.get('password')
 
+    # Simple input validation (whitelisting approach)
     if not username.isalnum() or not password.isalnum():
         return jsonify({"message": "Invalid input"}), 400
 
     conn = sqlite3.connect('example.db')
     c = conn.cursor()
+    # Use parameterized queries to prevent SQL injection
     query = "SELECT * FROM users WHERE username=? AND password=?"
     c.execute(query, (username, password))
     user = c.fetchone()
