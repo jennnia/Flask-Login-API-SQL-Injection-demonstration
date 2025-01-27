@@ -11,5 +11,6 @@ Valid Login:
 A valid login can be tested using curl with correct credentials: {"username": "admin", "password": "password123"}.
 Invalid Login:
 An invalid login attempt using curl with wrong credentials (e.g., {"username": "admin", "password": "wrongpassword"}) will return an error.
+Additionally, I have created a small SQLi automation tool, utilizing hardcoded payloads for testing purposes.
 
 ❗️Note: This project is for educational purposes only. It is intended to demonstrate SQL injection vulnerabilities and how to secure applications from such attacks. It should not be used for malicious activities.
